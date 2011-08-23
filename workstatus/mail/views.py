@@ -1,27 +1,33 @@
 # Create your views here.
 ##workstatus>mail
-from string import *
-    
-def parser():
+from string import*
+
+from django.http import HttpResponse
+
+def parser(request):
     """Filters through a message to find projects and their work progress status"""
-    string = "I am working on #jelly and #this. I paused #project. I am done #lunch, #dinner, and #breakfast."
+    
+    tempString = "I started #giveMattMoney. I am working on #jelly and #this. I paused #project. I am done #lunch, #dinner, and #breakfast."
              #00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999
              #01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234
 
+    startingKeys = ['started','began', 'initiated']
     doingKeys = ['working on', 'in progress','resume']
     doneKeys = ['completed','done','finished']
     pauseKeys = ['pause','on hold']
-    keys = [doingKeys, doneKeys, pauseKeys]
+    keys = [startingKeys, doingKeys, doneKeys, pauseKeys]
 
-    doingPros = [] #store names of projects
+    startingPros = [] #store names of projects
+    doingPros = [] 
     donePros = []
     pausePros = []
-    projects = [doingPros,donePros,pausePros]
+    projects = [startingPros,doingPros,donePros,pausePros]
 
-    doingTemp = [] #stores locations of keywords
+    startingTemp = [] #stores locations of keywords
+    doingTemp = [] 
     doneTemp = []
     pauseTemp = []
-    temp = [doingTemp,doneTemp,pauseTemp]
+    temp = [startingTemp, doingTemp,doneTemp,pauseTemp]
 
     locate = [] #stores locations of key words
 
@@ -31,11 +37,11 @@ def parser():
 
     for i in range(k):
         for j in range(len(keys[i])):
-            x = find(string,keys[i][j])
+            x = find(tempString,keys[i][j])
             while x != -1:
                 locate.append(x)
                 temp[i].append(x)
-                x = find(string,keys[i][j],x+1)
+                x = find(tempString,keys[i][j],x+1)
 
 ##    for i in range(len(temp)):
 ##        for x in range(len(temp[i])):
@@ -53,25 +59,32 @@ def parser():
             #print n
             #print 'locate [ n ] = start'
             #print 'locate [',n,'] =',start
-            if (n == len(locate)-1): end = len(string)
-            else: end = locate[n+1]
+            if (n == len(locate)-1):
+                end = len(tempString)
+            else:
+                end = locate[n+1]
             #print 'end',end
-            x = find(string, '#', start)
+            x = find(tempString, '#', start)
             #print 'x ',x
             while x!= -1 and x < end: #while a hash tag can be found
                 sub = ''
                 x+=1
-                #print string[x],ord(string[x])
-                while (ord(string[x]) > 64 and ord(string[x]) < 91) or (ord(string[x]) > 96 and ord(string[x]) < 123) or (ord(string[x]) >47 and ord(string[x])<58):
+                #print tempString[x],ord(tempString[x])
+                while (tempString[x] in ascii_letters):
                     #while next space, period, comma etc is not reached yet
-                    sub += string[x]
+                    #while next space, period, comma etc is not reached yet
+                    sub += tempString[x]
                     #print 'sub:',sub
                     x += 1
                 projects[i].append(sub) #add project name to list
                 #print projects[i]
                 start = x+1
-                x = find(string, '#', start)
-    print 'This is the message: \n',string
+                x = find(tempString, '#', start)
+    output = startingPros
+    
+    print 'This is the message: \n',tempString
+    print '\nThese are the projects added:'
+    print startingPros
     print '\nThese are the projects in progress:'
     print doingPros
     print '\nThese are the projects that are finished:'
@@ -79,5 +92,6 @@ def parser():
     print '\nThese are the projects that have been paused:'
     print pausePros
 
+    return HttpResponse(output)
     
 
