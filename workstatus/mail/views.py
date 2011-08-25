@@ -1,18 +1,18 @@
 # Create your views here.
 ##workstatus>mail
 from string import*
-from django
+
 
 from django.http import HttpResponse
 
 def helloworld(request):
     output = '''
     <html>
-    <head>
-        <title>Hello World!</title>
-    </head>
+        <head>
+          <title>Hello World!</title>
+        </head>
     <body>
-    <h1>Hellow World!</h1>
+    <h1>Hello World!</h1>
     </body>'''
     return HttpResponse(output)
 
