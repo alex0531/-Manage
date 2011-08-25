@@ -22,3 +22,5 @@ def updateProject(emailAddress, projectName, progress):
     else:
         print "Keyword not found."
         return None
+    
+    user.save()
