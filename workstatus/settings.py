@@ -4,7 +4,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Priscilla', 'priscilla@myplanetdigital.com'),('Alex','alex@myplanetdigital.com'),
+    (),
 )
 
 MANAGERS = ADMINS
@@ -125,7 +125,7 @@ INSTALLED_APPS = (
     'workstatus.mail',
     'workstatus.loadDatabase',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
