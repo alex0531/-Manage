@@ -84,7 +84,7 @@ def parser(request):
                 start = x+1
                 x = find(tempString, '#', start)
     output = "This is the message: \n" + tempString
-    This is the message:<br>
+    #This is the message:<br>
     #These are the projects added
     #print startingPros
     #print '\nThese are the projects in progress:'
