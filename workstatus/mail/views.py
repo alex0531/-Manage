@@ -86,7 +86,7 @@ def parser(request):
                 x = find(tempString, '#', start)
 
 
-    template = Template('testing.html')
+    template = get_template('testing.html')
     
     variables = Context({'startingPros': startingPros, 'doingPros': doingPros, 'donePros': donePros, 'pausePros': pausePros})
     
