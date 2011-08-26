@@ -2,8 +2,13 @@
 ##workstatus>mail
 from string import*
 from django.http import HttpResponse
+<<<<<<< HEAD
 from django.template import Template,Context
 #from django.template.loader import get_template
+=======
+from django.template import Context
+from django.template.loader import get_template
+>>>>>>> c7549325108b5b4cdedf01eec2859d69f5758b5d
 
 def helloworld(request):
     output = '<html><head><title>Hello World!</title></head><body><h1>Hello World!</h1></body>'
@@ -86,9 +91,14 @@ def parser(request):
                 start = x+1
                 x = find(tempString, '#', start)
 
+<<<<<<< HEAD
 
     template = Template('testing.html')
     
+=======
+    template = get_template('testing.html')
+
+>>>>>>> c7549325108b5b4cdedf01eec2859d69f5758b5d
     variables = Context({'startingPros': startingPros, 'doingPros': doingPros, 'donePros': donePros, 'pausePros': pausePros})
     
     output = template.render(variables)
