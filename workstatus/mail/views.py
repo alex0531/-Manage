@@ -87,14 +87,15 @@ def parser(request):
 
     
     variables = Context ({
-        "These are the projects added" : startingPros
-        "\n These are the projects in progress" : doingPros
-        "\n These are the projects that are finished" : donePros
+        "These are the projects added" : startingPros,
+        "\n These are the projects in progress" : doingPros,
+        "\n These are the projects that are finished" : donePros,
         "\n These are the projects that have been paused" : pausePros
         
     })
     
     output = template.render(variables)
+
 
     return HttpResponse(output)
     
