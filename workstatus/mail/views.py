@@ -2,6 +2,7 @@
 ##workstatus>mail
 from string import*
 from django.http import HttpResponse
+from django.template import Context
 
 def helloworld(request):
     output = '<html><head><title>Hello World!</title></head><body><h1>Hello World!</h1></body>'
@@ -83,17 +84,18 @@ def parser(request):
                 #print projects[i]
                 start = x+1
                 x = find(tempString, '#', start)
-    output = "This is the message: \n" + tempString
-    This is the message:<br>
-    #These are the projects added
-    #print startingPros
-    #print '\nThese are the projects in progress:'
-    #print doingPros
-    #print '\nThese are the projects that are finished:'
-    #print donePros
-    #print '\nThese are the projects that have been paused:'
-    #print pausePros"""
-
+    
+    variables = Context ({
+        "These are the projects added" : startingPros
+        "\n These are the projects in progress" : doingPros
+        "\n These are the projects that are finished" : donePros
+        "\n These are the projects that have been paused" : pausePros
+        
+    })
+    
+    output = template.render(variables)
     return HttpResponse(output)
+    
+   
     
 
