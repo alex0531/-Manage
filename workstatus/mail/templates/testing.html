@@ -7,28 +7,28 @@
 <body>
         <p>These are the projects added:<br>
         <ul>
-        {% for project in {{startingPros}} %}
+        {% for project in startingPros %}
             <li>{{ project }}</li>
         {% endfor %}
         </ul></p>
         
         <p>These are the projects in progress: <br>
         <ul>
-        {% for project in {{doingPros}} %}
+        {% for project in doingPros %}
             <li>{{project}}</li>
         {% endfor %}
         </ul></p>
 
         <p>These are the projects that are finished: <br>
         <ul>
-        {% for project in {{donePros}} %}
+        {% for project in donePros %}
             <li>{{project}}</li>
         {% endfor %}
         </ul></p>
 
         <p>These are the projects that have been paused: <br>
         <ul>
-        {% for project in {{pausePros}} %}
+        {% for project in pausePros %}
             <li>{{pausePros}}</li>
         {% endfor %}
         </ul></p>
