@@ -3,6 +3,7 @@
 from string import*
 from django.http import HttpResponse
 from django.template import Context
+from django.template.loader import get_template
 
 def helloworld(request):
     output = '<html><head><title>Hello World!</title></head><body><h1>Hello World!</h1></body>'
