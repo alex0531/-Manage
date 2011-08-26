@@ -1,5 +1,5 @@
 # Django settings for workstatus project.
-
+import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -64,7 +64,7 @@ MEDIA_URL = ''
 # Example: "/home/media/media.lawrence.com/static/"
 # STATIC_ROOT = ''
 ROOT_PATH = os.path.abspath(os.path.dirname(__file__))
-STATIC_ROOT = (os.path.join(ROOT_PATH, "static"),)
+STATIC_ROOT = os.path.join(ROOT_PATH, "static")
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
