@@ -90,7 +90,7 @@ def parser(request):
     template = get_template('testing.html')
 
 
-    variables = Context({'startingPros': startingPros, 'doingPros': doingPros, 'donePros': donePros, 'pausePros': pausePros})
+    variables = Context({'tempString': tempString, 'startingPros': startingPros, 'doingPros': doingPros, 'donePros': donePros, 'pausePros': pausePros})
     
     output = template.render(variables)
 
