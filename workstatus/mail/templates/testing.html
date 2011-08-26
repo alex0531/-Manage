@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>Fixing Name Error!</title>
+</head>
+
+<body>
+        <p>These are the projects added:<br>
+        <ul>
+        {% for project in {{startProjects}} %}
+            <li>{{ project }}</li>
+        {% endfor %}
+        </ul></p>
+        
+        <p>These are the projects in progress: <br>
+        <ul>
+        {% for project in {{doingPros}} %}
+            <li>{{project}}</li>
+        {% endfor %}
+        </ul></p>
+
+        <p>These are the projects that are finished: <br>
+        <ul>
+        {% for project in {{donePros}} %}
+            <li>{{project}}</li>
+        {% endfor %}
+        </ul></p>
+
+        <p>These are the projects that have been paused: <br>
+        <ul>
+        {% for project in {{pausePros}} %}
+            <li>{{pausePros}}</li>
+        {% endfor %}
+        </ul></p>
+</body>
+</html>
