@@ -83,8 +83,7 @@ def parser(request):
                 #print projects[i]
                 start = x+1
                 x = find(tempString, '#', start)
-    output = startingPros
-    
+    output = """    
     print 'This is the message: \n',tempString
     print '\nThese are the projects added:'
     print startingPros
@@ -93,7 +92,7 @@ def parser(request):
     print '\nThese are the projects that are finished:'
     print donePros
     print '\nThese are the projects that have been paused:'
-    print pausePros
+    print pausePros"""
 
     return HttpResponse(output)
     
