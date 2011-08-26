@@ -84,6 +84,7 @@ def parser(request):
                 #print projects[i]
                 start = x+1
                 x = find(tempString, '#', start)
+
     
     variables = Context ({
         "These are the projects added" : startingPros
@@ -94,6 +95,7 @@ def parser(request):
     })
     
     output = template.render(variables)
+
     return HttpResponse(output)
     
    
