@@ -3,6 +3,7 @@
 from string import*
 from django.http import HttpResponse
 from django.template import Template,Context
+from django.template.loader import get_template
 
 def helloworld(request):
     output = '<html><head><title>Hello World!</title></head><body><h1>Hello World!</h1></body>'
@@ -86,7 +87,11 @@ def parser(request):
                 x = find(tempString, '#', start)
 
 
+<<<<<<< HEAD
     template = get_template('testing.html')
+=======
+    template = get_template{'testing.html')
+>>>>>>> 798757114118951acb97d2c996f46a976c8e2a75
     
     variables = Context({'startingPros': startingPros, 'doingPros': doingPros, 'donePros': donePros, 'pausePros': pausePros})
     
