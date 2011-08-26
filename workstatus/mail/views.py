@@ -1,19 +1,10 @@
 # Create your views here.
 ##workstatus>mail
 from string import*
-
-
 from django.http import HttpResponse
 
 def helloworld(request):
-    output = '''
-    <html>
-        <head>
-          <title>Hello World!</title>
-        </head>
-    <body>
-    <h1>Hello World!</h1>
-    </body>'''
+    output = '<html><head><title>Hello World!</title></head><body><h1>Hello World!</h1></body>'
     return HttpResponse(output)
 
 def parser(request):
