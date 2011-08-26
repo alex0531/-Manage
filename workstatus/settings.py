@@ -1,4 +1,4 @@
-#import os
+import os
 
 # Django settings for workstatus project.
 
@@ -129,7 +129,7 @@ INSTALLED_APPS = (
     'workstatus.mail',
     'workstatus.loadDatabase',
     # Uncomment the next line to enable the admin:
-    #'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
