@@ -5,7 +5,6 @@ from django.http import HttpResponse
 from django.template import Context
 from django.template.loader import get_template
 
-
 import feedparser
 import time
 import smtplib
@@ -21,8 +20,7 @@ PATH="/gmail/feed/atom"
 
 def parser(request):
     """Filters through a message to find projects and their work progress status"""
-    subject =
-    
+      
     
     tempString = str(scrapedFeed.entries[0].title)
              #00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999
