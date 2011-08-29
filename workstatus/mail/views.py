@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.template import Context
 from django.template.loader import get_template
 
+from django.core.mail import send_mail
 
 #import serial, sys
 #import feedparser
@@ -190,7 +191,8 @@ def parser(request):
     
     output = template.render(variables)
     
-    sendEmail('priscilla@myplanetdigital.com')
+    send_mail('hello','testing django core mail','umanage.mpd@gmail.com',['priscilla@myplanetdigital.com'],fail_silently=False,auth_user='umanage.mpd@gmail.com',auth_password='yashar2bananapeel',connection=None)
+    #sendEmail('priscilla@myplanetdigital.com')
 
     return HttpResponse(output)
 

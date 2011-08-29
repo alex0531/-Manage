@@ -21,9 +21,9 @@ DATABASES = {
 }
 
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.mailgun.org'
-EMAIL_HOST_USER = 'priscilla@myplanetdigital.com'#'workstatus@MPDprojects.mailgun.org'
-EMAIL_HOST_PASSWORD = 'Yashar2bananapeel'
+EMAIL_HOST = 'mail.google.com'
+EMAIL_HOST_USER = 'umanage.mpd@gmail.com'#'workstatus@MPDprojects.mailgun.org'
+EMAIL_HOST_PASSWORD = 'yashar2bananapeel'
 EMAIL_PORT = 587
 
 # Local time zone for this installation. Choices can be found here:
