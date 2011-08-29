@@ -4,16 +4,27 @@ from string import*
 from django.http import HttpResponse
 from django.template import Context
 from django.template.loader import get_template
+from django.core.mail import_
+
+import feedparser
+import time
+import smtplib
+
+#Settings
+USERNAME="90cgaragedoor@gmail.com"
+PASSWORD=" yashar2bananapeel"
+PROTO="https://"
+SERVER="mail.google.com"
+PATH="/gmail/feed/atom"
 
 
-def helloworld(request):
-    output = '<html><head><title>Hello World!</title></head><body><h1>Hello World!</h1></body>'
-    return HttpResponse(output)
 
 def parser(request):
     """Filters through a message to find projects and their work progress status"""
+    subject =
     
-    tempString = "I started #giveMattMoney. I am working on #jelly and #this. I paused #project. I am done #lunch, #dinner, and #breakfast."
+    
+    tempString = str(scrapedFeed.entries[0].title)
              #00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999
              #01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234
 
