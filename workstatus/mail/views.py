@@ -11,8 +11,8 @@ import time
 import smtplib
 
 #Settings
-USERNAME="90cgaragedoor@gmail.com"
-PASSWORD=" yashar2bananapeel"
+USERNAME="umanage.mpd@gmail.com"
+PASSWORD="yashar2bananapeel"
 PROTO="https://"
 SERVER="mail.google.com"
 PATH="/gmail/feed/atom"
@@ -101,9 +101,26 @@ def parser(request):
     variables = Context({'tempString': tempString, 'startingPros': startingPros, 'doingPros': doingPros, 'donePros': donePros, 'pausePros': pausePros})
     
     output = template.render(variables)
+    
+    #sendEmail('priscilla@myplanetdigital.com')
 
     return HttpResponse(output)
-    
+
+def sendEmail(replyAddress):
+	fromaddr = 'umanage.mpd@gmail.com'  
+	toaddrs  = replyAddress + '@hotmail.com'  
+	msg = 'Sorry, that passcode is incorrect'  
+	  
+	# Credentials (if needed) 
+	username = 'umanage.mpd@gmail.com'  
+	password = 'yashar2bananapeel'  
+	  
+	# The actual mail send  
+	server = smtplib.SMTP('smtp.gmail.com:587')  
+	server.starttls()  
+	server.login(username,password)  
+	server.sendmail(fromaddr, toaddrs, msg)  
+	server.quit()  
    
     
 
