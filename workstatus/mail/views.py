@@ -164,7 +164,6 @@ def parser(request):
              #00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999
              #01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234
 
-    tempString = 'asdfasdf'
     startingKeys = ['started','began', 'initiated']
     doingKeys = ['working on', 'in progress','resume']
     doneKeys = ['completed','done','finished']
