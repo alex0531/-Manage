@@ -10,7 +10,7 @@ from django.core.mail import send_mail
 
 import feedparser
 #import time
-#import smtplib
+import smtplib
 
 #Settings
 USERNAME="umanage.mpd@gmail.com"
