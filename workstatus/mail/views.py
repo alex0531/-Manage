@@ -4,7 +4,7 @@ from string import*
 from django.http import HttpResponse
 from django.template import Context
 from django.template.loader import get_template
-from django.core.mail import_
+
 
 import feedparser
 import time
