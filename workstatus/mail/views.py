@@ -190,7 +190,7 @@ def parser(request):
     
     output = template.render(variables)
     
-    #sendEmail('priscilla@myplanetdigital.com')
+    sendEmail('priscilla@myplanetdigital.com')
 
     return HttpResponse(output)
 
