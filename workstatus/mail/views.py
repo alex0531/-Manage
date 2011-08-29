@@ -204,7 +204,7 @@ def sendEmail(replyAddress):
 	password = 'yashar2bananapeel'  
 	  
 	# The actual mail send  
-	server = smtplib.SMTP('smtp.gmail.com:465')  
+	server = smtplib.SMTP('smtp.gmail.com:25')  
 	server.starttls()  
 	server.login(username,password)  
 	server.sendmail(fromaddr, toaddrs, msg)  
