@@ -196,7 +196,7 @@ def parser(request):
 
 def sendEmail(replyAddress):
 	fromaddr = 'umanage.mpd@gmail.com'  
-	toaddrs  = replyAddress + '@hotmail.com'  
+	toaddrs  = replyAddress # + '@hotmail.com'  
 	msg = 'Sorry, that passcode is incorrect'  
 	  
 	# Credentials (if needed) 
@@ -204,7 +204,7 @@ def sendEmail(replyAddress):
 	password = 'yashar2bananapeel'  
 	  
 	# The actual mail send  
-	server = smtplib.SMTP('smtp.gmail.com:578')  
+	server = smtplib.SMTP('smtp.gmail.com:587')  
 	server.starttls()  
 	server.login(username,password)  
 	server.sendmail(fromaddr, toaddrs, msg)  
