@@ -13,7 +13,7 @@ import loaddb
 from loaddb import addProject
 from django.contrib.auth.models import User
 
-#import time
+import time
 #import smtplib
 
 #Settings
@@ -29,13 +29,29 @@ lastModified = getInitialFeed.entries[0].modified
 ignoreList = []
 
 ################################################################################################################
+
+def read(request):
+        while True:
+            scrapedFeed = feedparser.parse(PROTO+USERNAME+":"+PASSWORD+"@"+SERVER+PATH)
+            try:
+                scrapedModified = scrapedFeed.entries[0].modified
+                break
+            except:
+                pass
+        
+        if lastModified < scrapedModified:
+            #parser(request) --> need to bind to a variable because the parser function returns a value
+        
+        time.sleep(3)
+
+
+
 ################################################################################################################
 
 def parser(request):
-    scrapedFeed = feedparser.parse(PROTO + USERNAME + ":" + PASSWORD + "@" + SERVER + PATH)
-    
-
     """Filters through a message to find projects and their work progress status"""
+    
+    scrapedFeed = feedparser.parse(PROTO + USERNAME + ":" + PASSWORD + "@" + SERVER + PATH)
     tempString = str(scrapedFeed.entries[0].title)
 
              #00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999
@@ -114,9 +130,6 @@ def parser(request):
     template = get_template('testing.html')
     variables = Context({'tempString': tempString, 'startingPros': startingPros, 'doingPros': doingPros, 'donePros': donePros, 'pausePros': pausePros})
     output = template.render(variables)
-    
-    #send_mail('hello','testing django core mail','umanage.mpd@gmail.com',['priscilla@myplanetdigital.com'],fail_silently=False,auth_user='umanage.mpd@gmail.com',auth_password='yashar2bananapeel',connection=None)
-    #sendEmail('priscilla@myplanetdigital.com')
     
     for name in startingPros: # add names of projects to database, name is a string
         fromAddress = str(scrapedFeed.entries[0].author_detail.email)
