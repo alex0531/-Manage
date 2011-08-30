@@ -1,5 +1,6 @@
 #from mail.models import*
 import models
+from models import Project, User
 
 def addProject(emailAddress, projectName):
     """adds project to db""" 
