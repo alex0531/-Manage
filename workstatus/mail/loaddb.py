@@ -4,7 +4,7 @@ from models import Project, User
 
 def addProject(emailAddress, projectName):
     """adds project to db""" 
-    tempProject = Project(user = emailAddress, projectName = projectName, progress = 0)
+    tempProject = Project(user = emailAddress, name = projectName, progress = 0)
     tempProject.save()
 
 def updateProject(emailAddress, projectName, progress):
