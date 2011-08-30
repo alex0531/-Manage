@@ -4,7 +4,7 @@ from string import*
 from django.http import HttpResponse
 from django.template import Context
 from django.template.loader import get_template
-
+import workstatus.mail.models
 from django.core.mail import send_mail
 
 

@@ -1,5 +1,5 @@
 #from mail.models import*
-import models
+import workstatus.mail.models
 from models import Project, User
 
 def addProject(emailAddress, projectName, user1):
