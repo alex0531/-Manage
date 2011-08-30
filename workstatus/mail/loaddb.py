@@ -2,9 +2,9 @@
 import models
 from models import Project, User
 
-def addProject(emailAddress, projectName):
+def addProject(emailAddress, projectName, user1):
     """adds project to db""" 
-    tempProject = Project(user = User.objects.get(email = emailAddress), name = projectName, progress = 0)
+    tempProject = Project(user = user1, name = projectName, progress = 0)
     tempProject.save()
 
 def updateProject(emailAddress, projectName, progress):

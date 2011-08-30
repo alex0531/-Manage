@@ -119,7 +119,8 @@ def parser(request):
     
     for name in startingPros: # add names of projects to database, name is a string
         fromAddress = str(scrapedFeed.entries[0].author_detail.email)
-        #addProject(fromAddress, name)
+        user = User(username=scrapedFeed.entries[0].author_detail.name, email=fromAddress)
+        addProject(fromAddress, name, user)
 
     return HttpResponse(output)
 #
