@@ -11,6 +11,7 @@ from django.core.mail import send_mail
 import feedparser
 import loaddb
 from loaddb import addProject
+from django.contrib.auth.models import User
 
 #import time
 #import smtplib
