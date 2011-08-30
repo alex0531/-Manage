@@ -10,6 +10,8 @@ from django.core.mail import send_mail
 
 import feedparser
 import loaddb
+from loaddb import addProject
+
 #import time
 #import smtplib
 
