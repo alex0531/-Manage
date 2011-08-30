@@ -29,23 +29,19 @@ lastModified = getInitialFeed.entries[0].modified
 ignoreList = []
 
 ################################################################################################################
-
-def read(request):
-        while True:
-            scrapedFeed = feedparser.parse(PROTO+USERNAME+":"+PASSWORD+"@"+SERVER+PATH)
-            try:
-                scrapedModified = scrapedFeed.entries[0].modified
-                break
-            except:
-                pass
-        
-        if lastModified < scrapedModified:
-            #parser(request) --> need to bind to a variable because the parser function returns a value
-        
-        time.sleep(3)
-
-
-
+#def read(request):
+#        while True:
+#            scrapedFeed = feedparser.parse(PROTO+USERNAME+":"+PASSWORD+"@"+SERVER+PATH)
+#            try:
+#                scrapedModified = scrapedFeed.entries[0].modified
+#                break
+#            except:
+#                pass
+#        
+#        if lastModified < scrapedModified:
+#            #parser(request) --> need to bind to a variable because the parser function returns a value
+#        
+#        time.sleep(3)
 ################################################################################################################
 
 def parser(request):
