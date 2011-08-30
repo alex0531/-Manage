@@ -1,4 +1,5 @@
-from mail.models import*
+#from mail.models import*
+import models
 
 def addProject(emailAddress, projectName):
     """adds project to db""" 
