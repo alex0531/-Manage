@@ -120,8 +120,11 @@ def parser(request):
     
     for name in startingPros: # add names of projects to database, name is a string
         fromAddress = str(scrapedFeed.entries[0].author_detail.email)
-        user = User(username=str(scrapedFeed.entries[0].author_detail.name), email=fromAddress)
-        user.save()
+        
+        if User.objects.get(username=author_detail.email):        
+            user = User(username=str(scrapedFeed.entries[0].author_detail.name), email=fromAddress)
+            user.save()
+        else: user = User.objects.get(username=author_detail.email)
         addProject(fromAddress, name, user)
 
     return HttpResponse(output)
