@@ -124,7 +124,7 @@ def parser(request):
         if User.objects.get(username=author_detail.email):        
             user = User(username=str(scrapedFeed.entries[0].author_detail.name), email=fromAddress)
             user.save()
-        else: user = User.objects.get(username=author_detail.email)
+        else: user = User.objects.get(email = fromAddress)
         addProject(fromAddress, name, user)
 
     return HttpResponse(output)
