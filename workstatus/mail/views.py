@@ -131,6 +131,8 @@ def parser(request):
     variables = Context({'tempString': tempString, 'startingPros': startingPros, 'doingPros': doingPros, 'donePros': donePros, 'pausePros': pausePros})
     output = template.render(variables)
     
+    send_mail('Subject here', 'Here is the message.', 'umanage.mpd@gmail.com', ['priscilla@myplanetdigital.com'], fail_silently=False)
+    
     for name in startingPros: # add names of projects to database, name is a string
         fromAddress = str(scrapedFeed.entries[0].author_detail.email)
         fromName = str(scrapedFeed.entries[0].author_detail.name)
