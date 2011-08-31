@@ -6,7 +6,7 @@ from django.template import Context
 from django.template.loader import get_template
 import workstatus.mail.models
 from django.core.mail import send_mail
-import datetime
+from datetime import datetime
 
 import feedparser
 import loaddb
@@ -51,11 +51,11 @@ def read(request):
         time1 = str(scrapedModified)
         time1 = time1[1:11]+time1[12:20]
         time2 = datetime.strptime(time1, '%Y-%m-%d %H:%M:%S')
-        addMessage(email1, content, user, time2)
+        addMessage(user, email1, content, time2)
     
     time.sleep(3)
         
-    return HttpResponse()
+    return HttpResponse(parser(request))
 ################################################################################################################
 
 def parser(request):
