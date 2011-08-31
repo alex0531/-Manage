@@ -9,8 +9,7 @@ from django.core.mail import send_mail
 from datetime import datetime
 
 import feedparser
-import loaddb
-from loaddb import addMessage, addUser
+from workstatus.mail.loaddb import*
 from django.contrib.auth.models import User
 
 import time
