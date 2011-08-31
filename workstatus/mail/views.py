@@ -50,30 +50,27 @@ def read(request):
 
 def parser(request):
     """Filters through a message to find projects and their work progress status"""
-    
+    """Example: What needs to get done: #Project1, #Project2, #Project 
     scrapedFeed = feedparser.parse(PROTO + USERNAME + ":" + PASSWORD + "@" + SERVER + PATH)
     tempString = str(scrapedFeed.entries[0].title)
 
              #00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999
              #01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234
-
+    
     startingKeys = ['started','began', 'initiated']
     doingKeys = ['working on', 'in progress','resume']
     doneKeys = ['completed','done','finished']
-    pauseKeys = ['pause','on hold']
-    keys = [startingKeys, doingKeys, doneKeys, pauseKeys]
+    keys = [startingKeys, doingKeys, doneKeys]
 
     startingPros = [] #store names of projects
     doingPros = [] 
     donePros = []
-    pausePros = []
-    projects = [startingPros,doingPros,donePros,pausePros]
+    projects = [startingPros,doingPros,donePros]
 
     startingTemp = [] #stores locations of keywords
     doingTemp = [] 
     doneTemp = []
-    pauseTemp = []
-    temp = [startingTemp, doingTemp,doneTemp,pauseTemp]
+    temp = [startingTemp, doingTemp,doneTemp]
 
     locate = [] #stores locations of key words
 
