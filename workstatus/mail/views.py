@@ -50,27 +50,17 @@ def parser(request):
 
     scrapedFeed = feedparser.parse(PROTO + USERNAME + ":" + PASSWORD + "@" + SERVER + PATH)
     length = 5
-    showEntries = [None]*length
+    showEntries = []
     
     for i in range(length):
         message = str(scrapedFeed.entries[length-i-1].title)
-        showEntries.insert(message,i)
+        showEntries.append(message)
 
     template = get_template('testing.html')
     variables = Context({'showEntries':showEntries})
     output = template.render(variables)
-    
-    send_mail('Subject here', 'Here is the message.', 'umanage.mpd@gmail.com', ['priscilla@myplanetdigital.com'], fail_silently=False)
-   
-    for name in startingPros: # add names of projects to database, name is a string
-        fromAddress = str(scrapedFeed.entries[0].author_detail.email)
-        fromName = str(scrapedFeed.entries[0].author_detail.name)
-        for user in User.objects.all():
-            if user.email == fromAddress or user.username == fromName:
-                break
-            else:
-                user = User(username=str(scrapedFeed.entries[0].author_detail.name), email = fromAddress)
-                user.save()
-            addProject(fromAddress, name, user)
 
     return HttpResponse(output)
+    
+    
+    
