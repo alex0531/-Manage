@@ -13,14 +13,8 @@ from django.utils.html import strip_tags #
 
 import feedparser
 
-
-from django.contrib.auth.models import User
-
-import time
-
 def sendmail(request):
     template = get_template('the_template.html')
-    send_mail('Subject here', 'Here is the message.', 'umanage.mpd@gmail.com', ['alex@myplanetdigital.com'], fail_silently=False)
     
     subject, from_email, to = 'Reply to this email ONLY!', 'umanage.mpd@gmail.com', 'alex@myplanetdigital.com'
     
@@ -32,3 +26,6 @@ def sendmail(request):
     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
     msg.attach_alternative(html_content, "text/html")
     msg.send()
+    
+     
+    return HttpResponse()
