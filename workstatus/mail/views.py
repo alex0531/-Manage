@@ -10,7 +10,7 @@ from django.core.mail import send_mail
 
 import feedparser
 import loaddb
-from loaddb import addProject
+from loaddb import addMessage, addUser
 from django.contrib.auth.models import User
 
 import time
@@ -43,13 +43,13 @@ def read(request):
             name = scrapedFeed.entries[0].author.name
             email = scrapedFeed.entries[0].author.email
             try:
-                user = User(name, email)
-                user.save()
+                addUser(name, email)
             except:
-                user = User.objects.get(emailaddress = email)
+                pass    
+            user = User.objects.get(emailaddress = email)
             content = scrapedFeed.entries[0].title
             time = scrapedModified
-            message = Message(user = user, emailaddress = email, time = time, content = content)
+            addMessage(user = user, emailaddress = email, time = time, content = content)
         
         time.sleep(3)
         
