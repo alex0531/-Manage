@@ -40,16 +40,16 @@ def read(request):
                 pass
        
         if lastModified < scrapedModified:
-            name = scrapedFeed.entries[0].author.name
-            email = scrapedFeed.entries[0].author.email
+            name = scrapedFeed.entries[0].name
+            email = scrapedFeed.entries[0].email
             try:
                 addUser(name, email)
             except:
                 pass    
             user = User.objects.get(emailaddress = email)
             content = scrapedFeed.entries[0].title
-            time = scrapedModified
-            addMessage(user = user, emailaddress = email, time = time, content = content)
+            time1 = scrapedModified
+            addMessage(user = user, emailaddress = email, time1 = time1, content = content)
         
         time.sleep(3)
         

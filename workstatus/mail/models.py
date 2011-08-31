@@ -6,4 +6,4 @@ class Message(models.Model):
     user = models.ForeignKey(User)
     emailaddress = models.EmailField()
     content = models.CharField(max_length = 140)
-    time = models.DateTimeField()#(input_formats = '%Y-%m-%dD%H:-%M:-%S:T')
+    time1 = models.DateTimeField()#(input_formats = '%Y-%m-%dD%H:-%M:-%S:T')
