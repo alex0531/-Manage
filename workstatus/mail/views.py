@@ -6,7 +6,7 @@ from django.template import Context
 from django.template.loader import get_template
 import workstatus.mail.models
 from django.core.mail import send_mail
-
+import datetime
 
 import feedparser
 import loaddb
@@ -30,28 +30,30 @@ ignoreList = []
 
 ################################################################################################################
 def read(request):
-    while True:    
-        while True:
-            scrapedFeed = feedparser.parse(PROTO+USERNAME+":"+PASSWORD+"@"+SERVER+PATH)
-            try:
-                scrapedModified = scrapedFeed.entries[0].modified
-                break
-            except:
-                pass
-       
-        if lastModified < scrapedModified:
-            name = scrapedFeed.entries[0].name
-            email = scrapedFeed.entries[0].email
-            try:
-                addUser(name, email)
-            except:
-                pass    
-            user = User.objects.get(emailaddress = email)
-            content = scrapedFeed.entries[0].title
-            time1 = scrapedModified
-            addMessage(user = user, emailaddress = email, time1 = time1, content = content)
-        
-        time.sleep(3)
+    #while True:    
+    while True:
+        scrapedFeed = feedparser.parse(PROTO+USERNAME+":"+PASSWORD+"@"+SERVER+PATH)
+        try:
+            scrapedModified = scrapedFeed.entries[0].modified
+            break
+        except:
+            pass
+   
+    if lastModified < scrapedModified:
+        name1 = scrapedFeed.entries[0].author_detail.name
+        email1 = scrapedFeed.entries[0].author_detail.email
+        #try:
+        addUser(name1, email1)
+        #except:
+        #    pass    
+        user = User.objects.get(email = email1)
+        content = str(scrapedFeed.entries[0].title)
+        time1 = str(scrapedModified)
+        time1 = time1[1:11]+time1[12:20]
+        time2 = datetime.strptime(time1, '%Y-%m-%d %H:%M:%S')
+        addMessage(email1, content, user, time2)
+    
+    time.sleep(3)
         
     return HttpResponse()
 ################################################################################################################
