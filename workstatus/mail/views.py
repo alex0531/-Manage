@@ -46,7 +46,7 @@ ignoreList = []
 
 def parser(request):
     """Filters through a message to find projects and their work progress status"""
-    """Example: What needs to get done: #Project1, #Project2, #Project 
+
     scrapedFeed = feedparser.parse(PROTO + USERNAME + ":" + PASSWORD + "@" + SERVER + PATH)
     tempString = str(scrapedFeed.entries[0].title)
 
