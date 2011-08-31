@@ -53,7 +53,8 @@ def parser(request):
     showEntries = [None]*length
     
     for i in range(length):
-        showEntries.insert(str(scrapedFeed.entries[length-i-1].title),i)   
+        message = str(scrapedFeed.entries[length-i-1].title)
+        showEntries.insert(message,i)
 
     template = get_template('testing.html')
     variables = Context({'showEntries':showEntries})
