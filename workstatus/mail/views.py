@@ -46,13 +46,14 @@ ignoreList = []
 
 def parser(request):
     """Filters through a message to find projects and their work progress status"""
+    """Example: What needs to get done: #Project1, #Project2, #Project"""
 
     scrapedFeed = feedparser.parse(PROTO + USERNAME + ":" + PASSWORD + "@" + SERVER + PATH)
     #tempString = str(scrapedFeed.entries[0].title)
     tempString = str(scrapedFeed.entries[0].content)
 
-             #00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999
-             #01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234
+    #00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999
+    #01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234
     
     startingKeys = ['started','began', 'initiated']
     doingKeys = ['working on', 'in progress','resume']
@@ -126,7 +127,7 @@ def parser(request):
     output = template.render(variables)
     
     send_mail('Subject here', 'Here is the message.', 'umanage.mpd@gmail.com', ['priscilla@myplanetdigital.com'], fail_silently=False)
-    
+   
     for name in startingPros: # add names of projects to database, name is a string
         fromAddress = str(scrapedFeed.entries[0].author_detail.email)
         fromName = str(scrapedFeed.entries[0].author_detail.name)
@@ -139,22 +140,9 @@ def parser(request):
             addProject(fromAddress, name, user)
 
     return HttpResponse(output)
-#
-#def sendEmail(replyAddress):
-#	fromaddr = 'umanage.mpd@gmail.com'  
-#	toaddrs  = replyAddress # + '@hotmail.com'  
-#	msg = 'Sorry, that passcode is incorrect'  
-#	  
-#	# Credentials (if needed) 
-#	username = 'umanage.mpd@gmail.com'  
-#	password = 'yashar2bananapeel'  
-#	  
-#	# The actual mail send  
-#	server = smtplib.SMTP('smtp.gmail.com:587')  
-#	server.starttls()  
-#	server.login(username,password)  
-#	server.sendmail(fromaddr, toaddrs, msg)  
-#	server.quit()  
+    
+    
+    
    
     
 
