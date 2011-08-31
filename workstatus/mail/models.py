@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Project(models.Model):
+class Message(models.Model):
     user = models.ForeignKey(User)
-    emailaddress = models.EmailFrield()
-    content = models.CharField(max_length =200)
-    time = models.CharField()
+    emailaddress = models.EmailField()
+    content = models.CharField(max_length = 140)
+    time = models.CharField(max_length = 100)
