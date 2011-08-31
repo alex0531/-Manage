@@ -29,23 +29,19 @@ lastModified = getInitialFeed.entries[0].modified
 ignoreList = []
 
 ################################################################################################################
-
-def read(request):
-        while True:
-            scrapedFeed = feedparser.parse(PROTO+USERNAME+":"+PASSWORD+"@"+SERVER+PATH)
-            try:
-                scrapedModified = scrapedFeed.entries[0].modified
-                break
-            except:
-                pass
-        
-        if lastModified < scrapedModified:
-            #parser(request) --> need to bind to a variable because the parser function returns a value
-        
-        time.sleep(3)
-
-
-
+#def read(request):
+#        while True:
+#            scrapedFeed = feedparser.parse(PROTO+USERNAME+":"+PASSWORD+"@"+SERVER+PATH)
+#            try:
+#                scrapedModified = scrapedFeed.entries[0].modified
+#                break
+#            except:
+#                pass
+#        
+#        if lastModified < scrapedModified:
+#            #parser(request) --> need to bind to a variable because the parser function returns a value
+#        
+#        time.sleep(3)
 ################################################################################################################
 
 def parser(request):
@@ -127,6 +123,8 @@ def parser(request):
     template = get_template('testing.html')
     variables = Context({'tempString': tempString, 'startingPros': startingPros, 'doingPros': doingPros, 'donePros': donePros, 'pausePros': pausePros})
     output = template.render(variables)
+    
+    send_mail('Subject here', 'Here is the message.', 'umanage.mpd@gmail.com', ['priscilla@myplanetdigital.com'], fail_silently=False)
     
     for name in startingPros: # add names of projects to database, name is a string
         fromAddress = str(scrapedFeed.entries[0].author_detail.email)
