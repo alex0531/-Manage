@@ -52,7 +52,7 @@ def parser(request):
     length = 5
     showEntries = [None]*length
     
-    for i in range showEntries:
+    for i in range len(showEntries):
         showEntries.insert (str(scrapedFeed.entries[showEntries-i-1)].title),i)   
 
     template = get_template('testing.html')
