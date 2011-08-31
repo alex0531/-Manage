@@ -126,6 +126,7 @@ INSTALLED_APPS = (
     'workstatus.mail',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+    'workstatus.sendingMassEmail',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
