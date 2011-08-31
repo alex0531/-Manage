@@ -13,12 +13,12 @@ from django.utils.html import strip_tags #
 
 import feedparser
 
-def sendmail(request):
-    template = get_template('the_template.html')
+def sendMorningMail(request):
+    template = get_template('Morning_Mail.html')
     
-    subject, from_email, to = 'Reply to this email ONLY!', 'umanage.mpd@gmail.com', 'alex@myplanetdigital.com'
+    subject, from_email, to = 'Morning Email (Reply to this Emailaddress ONLY!)', 'umanage.mpd@gmail.com', 'alex@myplanetdigital.com'
     
-    html_content = render_to_string('the_template.html')
+    html_content = render_to_string('Morning_Mail.html')
     text_content = strip_tags(html_content) #this strips the html, so people will have the text as well
     
     #Create the email, and attach the HTML version as well.
@@ -28,4 +28,20 @@ def sendmail(request):
     msg.send()
     
      
+    return HttpResponse()
+    
+def sendReminderMail(request):
+    template = get_template('Reminder_Mail.html')
+    
+    subject, from_email, to = 'Reminder Email (Reply to this Emailaddress ONLY!)', 'umanage.mpd@gmail.com', 'alex@myplanetdigital.com'
+    
+    html_content = render_to_string('Reminder_Mail.html')
+    text_content = strip_tags(html_content) #this strips the html, so people will have the text as well
+    
+    #Create the email, and attach the HTML version as well.
+    
+    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+    msg.attach_alternative(html_content, "text/html")
+    msg.send()
+    
     return HttpResponse()
