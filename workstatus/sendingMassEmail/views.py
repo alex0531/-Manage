@@ -18,16 +18,17 @@ from datetime import date
     
     
 def today():
+    
     today = date.today()
-    #if today.isoweekday() == 4:
-    if str(time.strftime('%X')) == '15:12:00':
-        sendMorningMail()
-        time.sleep(1)
+    if today.isoweekday() == 4:
+        if str(time.strftime('%X')) == '15:41:30':
+            sendMorningMail()
+            time.sleep(1)
             
     #elif today.isoweekday() == 6:
-    if str(time.strftime('%X')) == '15:13:00':
-        sendReminderMail()
-        time.sleep(1)
+        if str(time.strftime('%X')) == '15:42:30':
+            sendReminderMail()
+            time.sleep(1)
 
     #return HttpResponse()
 

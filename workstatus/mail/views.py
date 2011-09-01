@@ -33,13 +33,14 @@ def read(request):
     lastModified = getInitialFeed.entries[0].modified
 
     while True:
-        today()
+        #today()
+        sendReminderMail()
         while True:
             scrapedFeed = feedparser.parse(PROTO+USERNAME+":"+PASSWORD+"@"+SERVER+PATH)
-            try:
+            try: #read the time
                 scrapedModified = scrapedFeed.entries[0].modified
-                break
-            except:
+                break #if it works, break out of loop
+            except: #if it doesn't work try again
                 pass
         if lastModified < scrapedModified: #if there is a new message
             lastModified = scrapedModified
