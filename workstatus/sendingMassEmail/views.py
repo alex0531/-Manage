@@ -47,15 +47,14 @@ def sendMorningMail(request):
     msg.send()
     
     
-    
-    return HttpResponse()
-
-  
+ 
 #def sendReminderMail(request):
 #    template = get_template('Reminder_Mail.html')
 #    
 #    subject, from_email, to = 'Reminder Email (Reply to this Emailaddress ONLY!)', 'umanage.mpd@gmail.com', 'alex@myplanetdigital.com'
-#    
+#
+#previous = Message.objects.all()[0].content
+
 #    html_content = render_to_string('Reminder_Mail.html')
 #    text_content = strip_tags(html_content) #this strips the html, so people will have the text as well
 #    
