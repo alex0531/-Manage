@@ -12,6 +12,7 @@ import feedparser
 from django.contrib.auth.models import User
 from workstatus.mail.loaddb import addMessage, addUser
 from workstatus.mail.models import Message, User
+from workstatus.sendingMassEmail.views import *
 import time
 import smtplib
 
@@ -52,6 +53,7 @@ def read(request):
             time2 = time1[:10]+' '+time1[11:19] #edit string into a time that can be parsed
             time3 = datetime.strptime(time2, '%Y-%m-%d %H:%M:%S') #parse string into a datetime object
             addMessage(user, email1, content, time3)
+            sendReminderMail()
         
         time.sleep(3)
             
