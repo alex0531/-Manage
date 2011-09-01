@@ -31,8 +31,9 @@ ignoreList = []
 def read(request):
     getInitialFeed = feedparser.parse(PROTO + USERNAME + ":" + PASSWORD + "@" + SERVER + PATH)
     lastModified = getInitialFeed.entries[0].modified
-    today()
+
     while True:
+        today()
         while True:
             scrapedFeed = feedparser.parse(PROTO+USERNAME+":"+PASSWORD+"@"+SERVER+PATH)
             try:
@@ -40,26 +41,25 @@ def read(request):
                 break
             except:
                 pass
-        if lastModified < scrapedModified:
-            lastModified=scrapedModified
-            name1 = scrapedFeed.entries[0].author_detail.name
+        if lastModified < scrapedModified: #if there is a new message
+            lastModified = scrapedModified
+            name1 = scrapedFeed.entries[0].author_detail.name #get details
             email1 = scrapedFeed.entries[0].author_detail.email
+            content = str(scrapedFeed.entries[0].title) 
+            
             try:
-                user = User.objects.get(email = email1)
+                user = User.objects.get(email = email1) #try to get user who sent it from database
             except:
-                x = find(name1,' ')+1
+                x = find(name1,' ')+1 #if user does not exist, create user in database
                 first = name1[:x]
                 addUser(name1, email1, first)    
                 user = User.objects.get(email = email1)
-            content = str(scrapedFeed.entries[0].title)
+            
             time1 = str(scrapedModified) #parse into string so it can be sliced
             time2 = time1[:10]+' '+time1[11:19] #edit string into a time that can be parsed
             time3 = datetime.strptime(time2, '%Y-%m-%d %H:%M:%S') #parse string into a datetime object
-            addMessage(user, email1, content, time3)
-            today()
-        
-        
-        time.sleep(3)
+            addMessage(user, email1, content, time3) #add new Message object to database        
+        #time.sleep(1)
             
     return HttpResponse()
 ############################################################################################################
