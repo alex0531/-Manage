@@ -7,5 +7,5 @@ def addMessage(user, email1, content, time1):
     tempMessage.save()
 
 def addUser(name, address):
-    user = User(username = name, email = address)
+    user = User(username = name, email = address, first_name = first)
     user.save()

@@ -44,7 +44,9 @@ def read(request):
             name1 = scrapedFeed.entries[0].author_detail.name
             email1 = scrapedFeed.entries[0].author_detail.email
             try:
-                addUser(name1, email1)
+                x = find(name1,'')+1
+                first = name1[:x]
+                addUser(name1, email1, first)
             except:
                 pass    
             user = User.objects.get(email = email1)
