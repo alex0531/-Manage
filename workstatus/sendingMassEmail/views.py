@@ -17,21 +17,21 @@ from datetime import date
 
     
     
-#def today(request):
-#    today = date.today()
-#
-#    while True:
-#        if today.isoweekday() < 6:
-#            if str(time.strftime('%X')) == '12:21:00':
-#                sendMorningMail(request)
-#                time.sleep(1)
-#                
-    #    elif today.isoweekday() < 6:
-    #        if str(time.strftime('%X')) == '12:16:00':
-    #            sendReminderMail(request)
-    #            time.sleep(1)
-    #
-    #return HttpResponse()
+def today(request):
+    today = date.today()
+
+    while True:
+        if today.isoweekday() == 4:
+            if str(time.strftime('%X')) == '14:25:00':
+                sendMorningMail(request)
+                time.sleep(1)
+                
+        #elif today.isoweekday() == 6:
+            if str(time.strftime('%X')) == '14:28:00':
+                sendReminderMail(request)
+                time.sleep(1)
+    
+    return HttpResponse()
                 
 def sendMorningMail(request):
     template = get_template('Morning_Mail.html')
