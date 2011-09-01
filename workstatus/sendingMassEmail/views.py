@@ -17,8 +17,9 @@ from datetime import date
 
     
     
-def today(request):
-    today = date.today()
+#def today():
+    #today = date.today()
+
 
     while True:
         if today.isoweekday() == 4:
@@ -30,8 +31,8 @@ def today(request):
             if str(time.strftime('%X')) == '14:59:00':
                 sendReminderMail(request)
                 time.sleep(1)
+
     
-    return HttpResponse()
                 
 def sendMorningMail(request):
     template = get_template('Morning_Mail.html')

@@ -44,18 +44,19 @@ def read(request):
             name1 = scrapedFeed.entries[0].author_detail.name
             email1 = scrapedFeed.entries[0].author_detail.email
             try:
-                x = find(name1,'')+1
-                first = name1[:x]
-                addUser(name1, email1, first)
+                user = User.objects.get(email = email1)
             except:
-                pass    
-            user = User.objects.get(email = email1)
+                x = find(name1,' ')+1
+                first = name1[:x]
+                addUser(name1, email1, first)    
+                user = User.objects.get(email = email1)
             content = str(scrapedFeed.entries[0].title)
             time1 = str(scrapedModified) #parse into string so it can be sliced
             time2 = time1[:10]+' '+time1[11:19] #edit string into a time that can be parsed
             time3 = datetime.strptime(time2, '%Y-%m-%d %H:%M:%S') #parse string into a datetime object
             addMessage(user, email1, content, time3)
-            today()
+            #today()
+            sendReminderMail()
         
         time.sleep(3)
             
