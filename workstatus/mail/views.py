@@ -73,12 +73,13 @@ def parser(request):
         showEntries.insert(i,m[i])
 
     content0 = showEntries[0].content
+    user0 = showEntries[0].user.username
     time0 = str(showEntries[0].time1)
     
     showEntries.remove(showEntries[0])
 
     template = get_template('testing.html')
-    variables = Context({'showEntries':showEntries, 'content0':content0, 'time0':time0})
+    variables = Context({'showEntries':showEntries, 'content0':content0, 'time0':time0, 'user0':user0})
     output = template.render(variables)
 
     return HttpResponse(output)
