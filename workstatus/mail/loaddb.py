@@ -1,6 +1,5 @@
 #from mail.models import*
-import workstatus.mail.models
-from models import Message, User
+from workstatus.mail.models import Message, User
 
 def addMessage(user, email1, content, time1):
     """adds message to db"""
