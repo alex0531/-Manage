@@ -18,16 +18,17 @@ from datetime import date
     
     
 def today():
-    today = date.today()
-    #if today.isoweekday() == 4:
-    if str(time.strftime('%X')) == '15:12:00':
-        sendMorningMail()
-        time.sleep(1)
-            
-    #elif today.isoweekday() == 6:
-    if str(time.strftime('%X')) == '15:13:00':
-        sendReminderMail()
-        time.sleep(1)
+    while True:
+        today = date.today()
+        if today.isoweekday() == 4:
+            if str(time.strftime('%X')) == '15:22:15':
+                sendMorningMail()
+                time.sleep(1)
+                break
+            #elif today.isoweekday() == 6:
+            if str(time.strftime('%X')) == '15:23:00':
+                sendReminderMail()
+                time.sleep(1)
 
     #return HttpResponse()
 
@@ -53,9 +54,7 @@ def sendMorningMail():
 def sendReminderMail():
     for user in User.objects.all():
         user_msgs = list(Message.objects.filter(user=user))
-        
-        #ssort by time
-        
+                
         if len(user_msgs) >0:        
             previous = user_msgs[len(user_msgs)-1].content
                 
