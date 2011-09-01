@@ -18,6 +18,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     (r'^$', today),
     (r'^$', read),
-    (r'^updates/',parser),
-    (r'^(\w+)/$', user_page),
+    (r'^updates/$',parser),
+    (r'^updates/(\w+)/$', user_page),
 )
