@@ -50,14 +50,14 @@ def sendMorningMail(request):
     return HttpResponse()    
     
  
-def sendReminderMail(request):
+def sendReminderMail():
     for user in User.objects.all():
         user_msgs = list(Message.objects.filter(user=user))
         
         #ssort by time
         
         if len(user_msgs) >0:        
-            previous = user_msgs[0].content
+            previous = user_msgs[len(user_msgs)-1].content
                 
             template = get_template('Reminder_Mail.html')
             
@@ -71,4 +71,4 @@ def sendReminderMail(request):
             msg.attach_alternative(html_content, "text/html")
             msg.send()
         
-    return HttpResponse()
+    #return HttpResponse()
