@@ -16,8 +16,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    (r'^Morning/$', sendMorningMail),
-    (r'^reminder/$', sendReminderMail),
+    (r'^$', read),
     (r'^updates/$',parser),
     (r'^updates/(\w+)/$', user_page),
 )
