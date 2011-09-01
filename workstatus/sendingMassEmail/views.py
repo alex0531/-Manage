@@ -22,12 +22,12 @@ def today(request):
 
     while True:
         if today.isoweekday() == 4:
-            if str(time.strftime('%X')) == '14:45:00':
+            if str(time.strftime('%X')) == '14:57:00':
                 sendMorningMail(request)
                 time.sleep(1)
                 
         #elif today.isoweekday() == 6:
-            if str(time.strftime('%X')) == '14:47:00':
+            if str(time.strftime('%X')) == '14:59:00':
                 sendReminderMail(request)
                 time.sleep(1)
     
