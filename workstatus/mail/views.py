@@ -1,33 +1,32 @@
 # Create your views here.
 ##workstatus>mail
-from string import*
-from django.http import HttpResponse
-from django.template import Context
-from django.template.loader import get_template
+#from string import*
+#from django.http import HttpResponse
+#from django.template import Context
+#from django.template.loader import get_template
 #import workstatus.mail.models
-from django.core.mail import send_mail
-from datetime import datetime
-
-import feedparser
-from django.contrib.auth.models import User
-from workstatus.mail.loaddb import addMessage, addUser
-from workstatus.mail.models import Message, User
-import time
+#from django.core.mail import send_mail
+#from datetime import datetime
+#
+#import feedparser
+#from django.contrib.auth.models import User
+#from workstatus.mail.loaddb import addMessage, addUser
+#from workstatus.mail.models import Message, User
+#import time
 #import smtplib
-
+#
 #Settings
-USERNAME="umanage.mpd@gmail.com"
-PASSWORD=" yashar2bananapeel"
-PROTO="https://"
-SERVER="mail.google.com"
-PATH="/gmail/feed/atom"
-
-
-getInitialFeed = feedparser.parse(PROTO + USERNAME + ":" + PASSWORD + "@" + SERVER + PATH)
-lastModified = getInitialFeed.entries[0].modified
-ignoreList = []
-
-################################################################################################################
+#USERNAME="umanage.mpd@gmail.com"
+#PASSWORD=" yashar2bananapeel"
+#PROTO="https://"
+#SERVER="mail.google.com"
+#PATH="/gmail/feed/atom"
+#
+#getInitialFeed = feedparser.parse(PROTO + USERNAME + ":" + PASSWORD + "@" + SERVER + PATH)
+#lastModified = getInitialFeed.entries[0].modified
+#ignoreList = []
+#
+###########################################################################################################    
 def read(request):
     getInitialFeed = feedparser.parse(PROTO + USERNAME + ":" + PASSWORD + "@" + SERVER + PATH)
     lastModified = getInitialFeed.entries[0].modified
@@ -95,5 +94,6 @@ def user_page(request,username):
     
     output = template.render(variables)
     return HttpResponse(output)
+
 
     
