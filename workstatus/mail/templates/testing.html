@@ -7,12 +7,18 @@
 <body>
         <h1>uManage</h1>
 	
-	<p><b>The last three messages are:</b>
-        <ul>
-        {% for message in showEntries %}
-            <li>{{ message }}</li>
+        
+        <p><font size = "5">"</font>
+            <font size="4">{{content0}}</font>
+            <font size = "5">"</font>
+        <br><font size = "1">--<b>{{user0}}</b>At {{time0}}</font></p>
+        
+        {% for x in showEntries %}
+        <p>
+            {{x.content}}
+        <br></p>
         {% endfor %}
-        </ul></p>
+
         
 
 </body>

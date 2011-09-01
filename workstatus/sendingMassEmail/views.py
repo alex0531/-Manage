@@ -35,7 +35,9 @@ def sendReminderMail(request):
     
     subject, from_email, to = 'Reminder Email (Reply to this Emailaddress ONLY!)', 'umanage.mpd@gmail.com', 'alex@myplanetdigital.com'
     
-    html_content = render_to_string('Reminder_Mail.html')
+    previous = Message.objects.all()[0].content
+    
+    html_content = render_to_string('Reminder_Mail.html',{'previous':previous})
     text_content = strip_tags(html_content) #this strips the html, so people will have the text as well
     
     #Create the email, and attach the HTML version as well.

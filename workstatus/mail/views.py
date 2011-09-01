@@ -57,25 +57,42 @@ def read(request):
         time.sleep(3)
             
     return HttpResponse()
-################################################################################################################
+############################################################################################################
 
 def parser(request):
     """Filters through a message to find projects and their work progress status"""
     """Example: What needs to get done: #Project1, #Project2, #Project"""
 
-    scrapedFeed = feedparser.parse(PROTO + USERNAME + ":" + PASSWORD + "@" + SERVER + PATH)
-    length = 5
-    showEntries = []
+    showEntries = [None]*10
+    m = list(Message.objects.all())
     
-    for i in range(length):
-        message = str(scrapedFeed.entries[i].title)
-        showEntries.append(message)
+    if len(showEntries) > len(m): length = len(m)
+    else: length = len(showEntries)
+    
+    for i in range(0,length):
+        showEntries.insert(i,m[i])
+
+    content0 = showEntries[0].content
+    time0 = str(showEntries[0].time1)
+    
+    showEntries.remove(showEntries[0])
 
     template = get_template('testing.html')
-    variables = Context({'showEntries':showEntries})
+    variables = Context({'showEntries':showEntries, 'content0':content0, 'time0':time0})
     output = template.render(variables)
 
     return HttpResponse(output)
+
+#############################################################################################################
+
+def user_page(request,username):
+    user1 = User.objects.get(username=username)
+    user_msgs = Message.objects.filter(user = user1)    
+    template = get_template('user_page.html')
+   
+    variables = Context({ 'messages':user_msgs })
     
-    
+    output = template.render(variables)
+    return HttpResponse(output)
+
     
