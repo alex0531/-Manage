@@ -17,24 +17,23 @@ from datetime import date
 
     
     
-#def today():
-    #today = date.today()
+def today():
+    today = date.today()
+    #if today.isoweekday() == 4:
+    if str(time.strftime('%X')) == '15:12:00':
+        sendMorningMail()
+        time.sleep(1)
+            
+    #elif today.isoweekday() == 6:
+    if str(time.strftime('%X')) == '15:13:00':
+        sendReminderMail()
+        time.sleep(1)
 
-
-    while True:
-        if today.isoweekday() == 4:
-            if str(time.strftime('%X')) == '14:57:00':
-                sendMorningMail(request)
-                time.sleep(1)
-                
-        #elif today.isoweekday() == 6:
-            if str(time.strftime('%X')) == '14:59:00':
-                sendReminderMail(request)
-                time.sleep(1)
+    #return HttpResponse()
 
     
                 
-def sendMorningMail(request):
+def sendMorningMail():
     template = get_template('Morning_Mail.html')
     
     subject, from_email, to = 'Morning Email (Reply to this Emailaddress ONLY!)', 'umanage.mpd@gmail.com', 'alex@myplanetdigital.com'
@@ -48,7 +47,7 @@ def sendMorningMail(request):
     msg.attach_alternative(html_content, "text/html")
     msg.send()
     
-    return HttpResponse()    
+    #return HttpResponse()    
     
  
 def sendReminderMail():
