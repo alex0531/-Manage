@@ -11,29 +11,25 @@ from django.template.loader import render_to_string #
 from django.utils.html import strip_tags #
 from workstatus.mail.models import *
 import feedparser
+import time
 
-import os, time
-from datetime import date
 
     
     
-def today():
-    today = date.today()
-    if today.isoweekday() == 4:
-        if str(time.strftime('%X')) == '15:22:15':
+def check(current, day):
+    if day == 4 and current == '17:36:40':
             sendMorningMail()
             time.sleep(1)
-         #elif today.isoweekday() == 6:
-        if str(time.strftime('%X')) == '15:23:00':
+    elif day == 4 and current == '17:37:50':
             sendReminderMail()
             time.sleep(1)
-
+ 
     
                 
 def sendMorningMail():
     template = get_template('Morning_Mail.html')
     
-    subject, from_email, to = 'Morning Email (Reply to this Emailaddress ONLY!)', 'umanage.mpd@gmail.com', 'alex@myplanetdigital.com'
+    subject, from_email, to = 'Morning Email (Reply to this Emailaddress ONLY!)', 'umanage.mpd@gmail.com', 'django1234567890@gmail.com'
     
     html_content = render_to_string('Morning_Mail.html')
     text_content = strip_tags(html_content) #this strips the html, so people will have the text as well
